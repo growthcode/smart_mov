@@ -14,4 +14,15 @@
  *= require_self
  */
 
-@import 'main';
+ //Import bootstrap files
+ @import "bootstrap-sprockets";
+ @import "bootswatch/yeti/variables";
+ @import "bootstrap";
+ @import "bootswatch/yeti/bootswatch";
+
+ // Bootstrap body padding for fixed navbar
+ // body { padding-top: 60px; }
+
+ // Whatever application styles you have go last
+ @import "base";
+ @import 'hethe-css-helpers';

@@ -1,0 +1,27 @@
+// TEMP FILE LOCATION --- Goes in vendor
+
+// quickly identify outlines
+// Put into HTML, example: <h1 class="red">Headline</h1>
+
+// "@extend" the class into a scss selection, example
+// .flock-headline {
+//   @extend .red;
+// }
+
+// default size is 2px thick
+// change the default by adding a dash ("-") and number up to 10, example:
+// .red-5 --> this will add a 5px thick red outline
+// .green-8 --> this will add a 8px thick green outline
+
+$colors: ("red", "orange", "yellow", "green", "blue", "pink", "purple", "white", "black");
+@each $color in $colors {
+  .#{$color} {
+    outline: 2px solid #{$color};
+  }
+
+  @for $pixel from 1 through 10 {
+    .#{$color}-#{$pixel} {
+      outline: #{$pixel}px solid #{$color};
+    }
+  }
+}
