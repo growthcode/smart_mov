@@ -24,7 +24,7 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'bootswatch-rails'
 gem 'colorize','~> 0.7.5'
 gem 'devise'
-gem 'factory_bot'
+gem 'factory_bot_rails'
 gem 'faker'
 gem 'font-awesome-rails'
 gem 'jquery-rails' # Dropped in Rails 5.1
@@ -64,6 +64,7 @@ gem 'devise-bootstrapped'
 # gem 'whenever', require: false # clear syntax for writing and deploying Cron Jobs (schedule.rb)
 
 group :development, :test do
+  gem 'rspec-rails' # this needs to be in development group so generators will also make spec files
   gem 'better_errors' # Better error page for Rack apps (doesn't work when you run "Bundle Exec rails s")
   gem 'bullet' # env development/test: pg, help to kill N+1 queries and unused eager loading
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -75,7 +76,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'timecop' # making it simple to test time-dependent code
 end
