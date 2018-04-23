@@ -11,6 +11,6 @@
 
 FactoryBot.define do
   factory :activity do
-    title "MyString"
+    title { Faker::RickAndMorty.quote }
   end
 end
