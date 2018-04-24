@@ -21,8 +21,8 @@ gem 'active_model_serializers'
 gem 'annotate'
 gem 'attribute_normalizer'
 gem 'awesome_print'
-gem 'bootstrap-sass', '~> 3.3.7'
-gem 'bootswatch-rails'
+gem 'bootstrap', '~> 4.1.0'
+gem 'bootswatch'
 gem 'colorize','~> 0.7.5'
 gem 'devise'
 gem 'factory_bot_rails'
@@ -30,13 +30,7 @@ gem 'faker'
 gem 'font-awesome-rails'
 gem 'jquery-rails' # Dropped in Rails 5.1
 gem 'simple_form'
-
-
-
 gem 'devise-bootstrapped'
-
-
-
 
 
 # might use later:
