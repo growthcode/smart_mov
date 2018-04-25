@@ -35,7 +35,7 @@ gem 'devise-bootstrapped'
 
 
 # https://github.com/rails/webpacker
-gem 'webpacker' # https://mkdev.me/en/mentors/IvanShamatov || https://paweljw.github.io/2017/07/rails-5.1-api-with-vue.js-frontend-part-1-setting-up-a-rails-api-app/
+gem 'webpacker', '~> 3.0.2' # https://mkdev.me/en/mentors/IvanShamatov || https://paweljw.github.io/2017/07/rails-5.1-api-with-vue.js-frontend-part-1-setting-up-a-rails-api-app/
 gem 'foreman'
 
 
