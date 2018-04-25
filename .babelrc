@@ -4,7 +4,7 @@
       "plugins": [
         [
           "babel-plugin-root-import", {
-            "rootPathSuffix": "app",
+            "rootPathPrefix": "app",
             "rootPathSuffix": "../app",
           }, {
             "rootPathPrefix": "~", // `~` is the default so you can remove this if you want
