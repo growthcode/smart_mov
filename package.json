@@ -7,11 +7,22 @@
   "license": "UNLICENSED",
   "dependencies": {
     "@rails/webpacker": "3.4",
+    "caniuse-lite": "^1.0.30000697",
+    "css-loader": "*",
     "vue": "^2.5.16",
     "vue-loader": "^15.0.0",
     "vue-template-compiler": "^2.5.16"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-root-import": "^5.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": ">=2.8.0",
+    "eslint-plugin-json": "^1.2.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": ">=3.0.1",
     "webpack-dev-server": "2.11.2"
   }
 }
