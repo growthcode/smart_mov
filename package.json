@@ -11,7 +11,8 @@
     "css-loader": "*",
     "vue": "^2.5.16",
     "vue-loader": "^15.0.0",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.5.16",
+    "webpack": "^1.0.0 || ^2.0.0 || ^3.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
