@@ -1,0 +1,39 @@
+{
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "babel-plugin-root-import", {
+            "rootPathSuffix": "app",
+            "rootPathSuffix": "../app",
+          }, {
+            "rootPathPrefix": "~", // `~` is the default so you can remove this if you want
+            "rootPathSuffix": "../../javascript"
+          }, {
+            "rootPathPrefix": "@vt", // At Vue Template ... doesn't exist at the moment
+            "rootPathSuffix": "../templates"
+          }, {
+            "rootPathPrefix": "#",
+            "rootPathSuffix": "../../app/assets" // default assets folder... need to do this though: https://github.com/rails/webpacker#resolved && this: https://shakacode.gitbooks.io/react-on-rails/content/docs/additional-reading/rails-assets-relative-paths.html
+          },
+        ],
+      ],
+    },
+  },
+  "presets": [
+    ["env", {
+      "modules": false,
+      "targets": {
+        "browsers": "> 1%",
+        "uglify": true
+      },
+      "useBuiltIns": true
+    }]
+  ],
+
+  "plugins": [
+    "syntax-dynamic-import",
+    "transform-object-rest-spread",
+    ["transform-class-properties", { "spec": true }]
+  ]
+}
