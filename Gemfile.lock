@@ -51,7 +51,7 @@ GEM
     arel (8.0.0)
     ast (2.4.0)
     attribute_normalizer (1.2.0)
-    autoprefixer-rails (8.3.0)
+    autoprefixer-rails (8.3.0.1)
       execjs
     awesome_print (1.8.0)
     axiom-types (0.1.1)
