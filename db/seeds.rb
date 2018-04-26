@@ -6,7 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-u = FactoryBot.create(:user, email: 'admin@gmail.com')
+u = User.find_by(email: 'admin@gmail.com')
+
+u ||= FactoryBot.create(:user, email: 'admin@gmail.com')
+FactoryBot.create(:activity, user: u)
+FactoryBot.create(:activity, user: u)
+FactoryBot.create(:activity, user: u)
+FactoryBot.create(:activity, user: u)
+FactoryBot.create(:activity, user: u)
+FactoryBot.create(:activity, user: u)
+FactoryBot.create(:activity, user: u)
 FactoryBot.create(:activity, user: u)
 FactoryBot.create(:activity, user: u)
 FactoryBot.create(:activity, user: u)
