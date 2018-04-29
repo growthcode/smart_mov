@@ -31,4 +31,11 @@ class User < ApplicationRecord
   end
 
   has_many :activities, dependent: :destroy
+  after_create :create_default_activities
+
+  def create_default_activities
+    Activity::DEFAULTS.each do |title, value|
+      activities.create(title: title, value: value)
+    end
+  end
 end

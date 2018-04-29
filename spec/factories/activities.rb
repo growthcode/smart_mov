@@ -13,7 +13,9 @@
 
 FactoryBot.define do
   factory :activity do
-    title { Faker::RickAndMorty.quote }
+    sequence :title do |n|
+      "#{Faker::RickAndMorty.quote} (#{n})"
+    end
     value { rand(1.0..20).round(2) }
 
     trait :with_user do

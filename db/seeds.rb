@@ -6,14 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-u = User.find_by(email: 'admin@gmail.com')
-
-u ||= FactoryBot.create(:user, email: 'admin@gmail.com')
-FactoryBot.create(:activity, :with_5_events, user: u)
-FactoryBot.create(:activity, :with_5_events, user: u)
-FactoryBot.create(:activity, :with_5_events, user: u)
-FactoryBot.create(:activity, :with_5_events, user: u)
-FactoryBot.create(:activity, :with_5_events, user: u)
-FactoryBot.create(:activity, :with_5_events, user: u)
-FactoryBot.create(:activity, :with_5_events, user: u)
-FactoryBot.create(:activity, :with_5_events, user: u)
+u = User.find_by(email: 'admin@gmail.com') || FactoryBot.create(:user, email: 'admin@gmail.com')
+15.times do
+  FactoryBot.create(:activity, :with_5_events, user: u)
+end
