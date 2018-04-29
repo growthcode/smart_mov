@@ -31,6 +31,7 @@ class User < ApplicationRecord
   end
 
   has_many :activities, dependent: :destroy
+  has_many :events, through: :activities
   after_create :create_default_activities
 
   def create_default_activities

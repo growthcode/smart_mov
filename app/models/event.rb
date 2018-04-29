@@ -12,6 +12,8 @@
 
 class Event < ApplicationRecord
   belongs_to :activity
+  belongs_to :user
+
   validates :activity_id, presence: true
 
   after_create :set_happened_at, if: Proc.new { |e| e.happened_at.blank? }

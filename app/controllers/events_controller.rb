@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = Event.all
+    @events = current_user.events.includes(:activity).order(:happened_at)
   end
 
   # GET /events/1

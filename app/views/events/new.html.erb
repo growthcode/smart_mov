@@ -23,30 +23,3 @@
     </div>
   </div>
 <% end %>
-
-<div class="row mt-5">
-  <div class="col">
-    <ul class="list-group list-group-flush">
-      <% current_user.activities.includes(:events).each do |activity| %>
-        <% activity.events.each do |event| %>
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-md-6">
-                <%= event.activity.title %>
-              </div>
-              <div class="col-md">
-                <%= event.created_at.stamp("9/9/99 at 3:00 am PST") %>
-              </div>
-              <div class="col-md">
-                <%= number_to_currency(event.activity.value) %>
-              </div>
-              <div class="col-md">
-                <%= link_to 'Show', event %> | <%= link_to 'Edit', edit_event_path(event) %> | <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
-  </div>
-</div>
