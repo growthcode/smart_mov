@@ -8,12 +8,12 @@ import Vue from 'vue/dist/vue.esm' // Use this to be able to target elements in
 
 import App from '../app.vue'
 
-document.addEventListener('DOMContentLoaded', () => {
-  const app = new Vue({
-    el: '#hello',
-    data: {
-      message: "Can you say hello?"
-    },
-    components: { App }
-  })
-})
+// document.addEventListener('DOMContentLoaded', () => {
+//   const app = new Vue({
+//     el: '#hello',
+//     data: {
+//       message: "Can you say hello?"
+//     },
+//     components: { App }
+//   })
+// })

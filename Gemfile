@@ -17,6 +17,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
+gem 'active_link_to'
 gem 'active_model_serializers'
 gem 'annotate'
 gem 'attribute_normalizer'
@@ -25,14 +26,13 @@ gem 'bootstrap', '~> 4.1.0'
 gem 'bootswatch'
 gem 'colorize','~> 0.7.5'
 gem 'devise'
+gem 'devise-bootstrapped'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'font-awesome-rails'
 gem 'jquery-rails' # Dropped in Rails 5.1
 gem 'simple_form'
-gem 'devise-bootstrapped'
 gem 'stamp'
-
 
 
 # https://github.com/rails/webpacker
