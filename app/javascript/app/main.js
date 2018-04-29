@@ -6,7 +6,7 @@ import Vue from 'vue/dist/vue.esm' // Use this to be able to target elements in
 // your existing html/erb templates
 // Add <%= javascript_pack_tag 'file_name' %> to your layout
 
-import App from '../app.vue'
+import App from 'app/templates/app.vue'
 
 // document.addEventListener('DOMContentLoaded', () => {
 //   const app = new Vue({

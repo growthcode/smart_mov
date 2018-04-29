@@ -14,10 +14,10 @@
               <%= event.activity.title %>
             </div>
             <div class="col-md">
-              <%= event.happened_at.stamp("9/9/99 at 3:00 am PST") %>
+              <%= event.happened_at.localtime.stamp("9/9/99 at 3:00am PST") %>
             </div>
             <div class="col-md">
-              <%= number_to_currency(event.activity.value) %>
+              <%= number_to_currency(event.value) %>
             </div>
             <div class="col-md">
               <%= link_to 'Show', event %> | <%= link_to 'Edit', edit_event_path(event) %> | <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>

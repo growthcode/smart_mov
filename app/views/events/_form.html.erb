@@ -1,22 +1,26 @@
-<%= form_with(model: event, local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-      <ul>
-      <% event.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+<div class="row">
+  <%= simple_form_for event do |f| %>
+    <div class="col-12">
+      <%= f.input :activity_id, as: :select, collection: @activities.map { |a| [a.title, a.id]}, label: "Past Movs", required: false, blank: true %>
+    </div>
+    <div class="col-12">
+      <%= f.input :value, required: false, placeholder: '5.00...', input_html: {min: 0.01, step: '0.01'} do %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text"">$</div>
+          </div>
+          <%= f.input_field :value, class: 'form-control', class: 'form-control', min: 0.01, step: '0.01' %>
+          <%= f.error :value, id: 'event_value', class: 'invalid-feedback' %>
+        </div>
       <% end %>
-      </ul>
+    </div>
+
+    <div class="col-12">
+      <%= f.input :happened_at %>
+    </div>
+
+    <div class="col-12 my-2">
+      <%= f.submit "Save Mov", class: 'btn btn-primary' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :activity_id %>
-    <%= form.number_field :activity_id, id: :event_activity_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

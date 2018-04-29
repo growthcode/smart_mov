@@ -1,9 +1,31 @@
-<p id="notice"><%= notice %></p>
+<dl class="row mt-3">
+  <dt class="col-sm-3">Activity Title: </dt>
+  <dd class="col-sm-9"><%= @event.activity.title %></dd>
 
-<p>
-  <strong>Activity:</strong>
-  <%= @event.activity_id %>
-</p>
+  <dt class="col-sm-3">Happened On:</dt>
+  <dd class="col-sm-9"><%= @event.happened_at.localtime.stamp("9/9/99 at 3:00am PST") %></dd>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+  <dt class="col-sm-3">Savings</dt>
+  <dd class="col-sm-9"><%= number_to_currency(@event.value) %></dd>
+</dl>
+
+
+<div class="row">
+  <div class="col-md-12">
+
+  </div>
+  <div class="col-md">
+
+  </div>
+  <div class="col-md">
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col">
+    <%= link_to 'Edit', edit_event_path(@event) %> |
+    <%= link_to 'Back', events_path %>
+  </div>
+</div>

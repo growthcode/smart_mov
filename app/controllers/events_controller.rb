@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :set_activities, only: [:new]
+  before_action :set_activities, only: [:new, :edit]
 
   # GET /events
   def index
@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @activity = Activity.new
+    @new_activity = Activity.new
     @event = Event.new
   end
 
@@ -23,14 +23,23 @@ class EventsController < ApplicationController
 
   # POST /events
   def create
-    if activity_params.present?
-      @activity = current_user.activities.with_title(activity_params).first
-      @activity ||= current_user.activities.create(activity_params)
+    if new_activity_params.present? && new_activity_params[:title].present?
+      @new_activity = current_user.activities.with_title(new_activity_params).first
+      @new_activity ||= current_user.activities.create(new_activity_params)
     elsif event_params[:activity_id].present?
       @activity = current_user.activities.find(event_params[:activity_id])
     end
 
-    @event = @activity.events.new(event_params)
+    @event = if @activity.present?
+               @activity.events.new(event_params)
+             elsif @new_activity.blank?
+               @new_activity = Activity.new
+               @event = Event.new
+             end
+
+    if @event.value.blank?
+      @event.value = @activity.try(:value)
+    end
 
     if @event.save
       redirect_to @event, notice: 'Event was successfully created.'
@@ -45,6 +54,7 @@ class EventsController < ApplicationController
     if @event.update(event_params)
       redirect_to @event, notice: 'Event was successfully updated.'
     else
+      set_activities
       render :edit
     end
   end
@@ -56,19 +66,20 @@ class EventsController < ApplicationController
   end
 
   private
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    def event_params
-      params.require(:event).permit(:activity_id)
-    end
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
-    def set_activities
-      @activities = current_user.activities
-    end
+  def event_params
+    params.require(:event).permit(:activity_id, :value)
+  end
 
-    def activity_params
-      params.require(:activity).permit(:title)
-    end
+  def set_activities
+    @activities = current_user.activities
+  end
+
+  def new_activity_params
+    params.require(:activity).permit(:title, :value)
+  end
 end
