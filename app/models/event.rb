@@ -12,7 +12,7 @@
 
 class Event < ApplicationRecord
   belongs_to :activity
-  belongs_to :user
+  has_one :user, through: :activity
 
   validates :activity_id, presence: true
 

@@ -7,9 +7,7 @@
 <%= simple_form_for(@event) do |f| %>
   <div class="row">
     <div class="col-12">
-      <div class="form-group">
-        <%= f.input :activity_id, as: :select, collection: @activities.map { |a| [a.title, a.id]}, label: false, prompt: '- Select from past Movs -' %>
-      </div>
+      <%= f.input :activity_id, as: :select, collection: @activities.map { |a| [a.title, a.id]}, label: false, prompt: '- Select from past Movs -' %>
 
       <div class="form-group">
         <%= text_field_tag('activity[title]', @activity.title, placeholder: 'Or create a new one...', class: 'form-control') %>

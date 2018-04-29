@@ -23,7 +23,7 @@ FactoryBot.define do
   factory :user do |n|
     email { |n| Faker::Internet.email.split('@').insert(1, "_#{n}") }
     password 'password'
-    first "First"
-    last "Name"
+    first { Faker::Name.first_name }
+    last { Faker::Name.last_name }
   end
 end

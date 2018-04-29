@@ -17,15 +17,12 @@ FactoryBot.define do
       "#{Faker::RickAndMorty.quote} (#{n})"
     end
     value { rand(1.0..20).round(2) }
-
-    trait :with_user do
-      user_id { FactoryBot.create(:user).id }
-    end
+    user { FactoryBot.create(:user) }
 
     trait :with_5_events do
-      after(:create) do |actvity|
+      after(:create) do |activity|
         5.times do
-          FactoryBot.create(:event, activity: actvity)
+          FactoryBot.create(:event, activity: activity)
         end
       end
     end
