@@ -25,5 +25,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  normalize_attributes :first, :last, with: :squish
+  normalize_attributes :email, with: :squish do |value|
+    value.to_s.downcase
+  end
+
   has_many :activities, dependent: :destroy
 end

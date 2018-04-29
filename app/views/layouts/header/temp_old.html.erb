@@ -1,3 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
+      <nav class="nav">
+        <%= active_link_to 'Record Mov', new_event_path, class: 'nav-item nav-link' %>
+        <%= active_link_to 'History', '#', class: 'nav-item nav-link' %>
+        <%= active_link_to 'Summary', '#', class: 'nav-item nav-link' %>
+        <%= active_link_to 'Profile', '#', class: 'nav-item nav-link' %>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: 'DELETE', class: 'nav-item nav-link' %>
+      </nav>
+
+    </div>
+  </div>
+</div>
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
     <%= link_to 'SmartMov', root_path, class: 'navbar-brand' %>
@@ -24,7 +41,7 @@
           </li>
         </ul>
       </div>
-    <% elsif !current_page?(new_user_session_path)%>
+    <% elsif !current_page?(new_user_session_path) %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
