@@ -12,4 +12,11 @@
 
 class Event < ApplicationRecord
   belongs_to :activity
+  validates :activity_id, presence: true
+
+  after_create :set_happened_at, if: Proc.new { |e| e.happened_at.blank? }
+
+  def set_happened_at
+    update(happened_at: created_at)
+  end
 end

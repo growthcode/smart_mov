@@ -1,5 +1,52 @@
-<h1>New Event</h1>
+<div class="row my-3">
+  <div class="col">
+    <h2>Record Mov</h2>
+  </div>
+</div>
 
-<%= render 'form', event: @event %>
+<%= simple_form_for(@event) do |f| %>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <%= f.input :activity_id, as: :select, collection: @activities.map { |a| [a.title, a.id]}, label: false, input_html: { prompt: '- Select from past Movs -' } %>
+      </div>
 
-<%= link_to 'Back', events_path %>
+      <div class="form-group">
+        <%= text_field_tag('activity[title]', @activity.title, placeholder: 'Or create a new one...', class: 'form-control') %>
+      </div>
+    </div>
+
+    <div class="col-12 my-2">
+      <div class="actions">
+        <%= f.submit "Save Mov", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="row mt-5">
+  <div class="col">
+    <ul class="list-group list-group-flush">
+      <% current_user.activities.includes(:events).each do |activity| %>
+        <% activity.events.each do |event| %>
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-md-6">
+                <%= event.activity.title %>
+              </div>
+              <div class="col-md">
+                <%= event.created_at.stamp("9/9/99 at 3:00 am PST") %>
+              </div>
+              <div class="col-md">
+                <%= number_to_currency(event.activity.value) %>
+              </div>
+              <div class="col-md">
+                <%= link_to 'Show', event %> | <%= link_to 'Edit', edit_event_path(event) %> | <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -31,6 +31,7 @@ gem 'font-awesome-rails'
 gem 'jquery-rails' # Dropped in Rails 5.1
 gem 'simple_form'
 gem 'devise-bootstrapped'
+gem 'stamp'
 
 
 

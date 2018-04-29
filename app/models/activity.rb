@@ -14,4 +14,13 @@
 class Activity < ApplicationRecord
   belongs_to :user
   has_many :events
+
+  normalize_attributes :title, with: :squish
+
+  scope :with_title, -> (title) {
+    where("activities.title ilike ?", title.to_s.strip)
+  }
+
+  validates :title, :user_id, presence: true
+  validates :title, uniqueness: true, case_sensitive: false
 end

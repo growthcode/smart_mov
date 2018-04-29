@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def index
     if user_signed_in?
-      redirect_to activities_path
+      redirect_to new_event_path
     end
   end
 end
