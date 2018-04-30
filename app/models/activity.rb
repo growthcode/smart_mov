@@ -4,7 +4,7 @@
 #
 #  id         :bigint(8)        not null, primary key
 #  title      :string
-#  favorite   :boolean
+#  favorite   :boolean          default(FALSE)
 #  value      :float
 #  user_id    :integer
 #  created_at :datetime         not null

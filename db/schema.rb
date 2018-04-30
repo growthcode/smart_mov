@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427044753) do
+ActiveRecord::Schema.define(version: 20180430061832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.string "title"
-    t.boolean "favorite"
+    t.boolean "favorite", default: false
     t.float "value"
     t.integer "user_id"
     t.datetime "created_at", null: false
