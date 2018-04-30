@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1
   def show
+    @activity = current_user.activities.includes(:events).order('events.happened_at').find(params[:id])
   end
 
   # GET /activities/new
@@ -35,7 +36,7 @@ class ActivitiesController < ApplicationController
   # PATCH/PUT /activities/1
   def update
     if @activity.update(activity_params)
-      redirect_to @activity, notice: 'Activity was successfully updated.'
+      redirect_to edit_activity_path(params[:id]), notice: 'Activity was successfully updated.'
     else
       render :edit
     end
@@ -55,6 +56,6 @@ class ActivitiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def activity_params
-      params.require(:activity).permit(:title)
+      params.require(:activity).permit(:title, :value, :favorite)
     end
 end

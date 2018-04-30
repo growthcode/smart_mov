@@ -1,22 +1,27 @@
-<%= form_with(model: activity, local: true) do |form| %>
-  <% if activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+<div class="row">
+  <%= simple_form_for activity do |f| %>
+    <div class="col-12">
+      <%= f.input :title, required: false %>
+    </div>
 
-      <ul>
-      <% activity.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <div class="col-12 mt-4">
+      <%= f.input :value, label: 'Savings', required: false, placeholder: '5.00...', input_html: {min: 0.01, step: '0.01'} do %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text"">$</div>
+          </div>
+          <%= f.input_field :value, class: 'form-control', class: 'form-control', min: 0.01, step: '0.01' %>
+          <%= f.error :value, id: 'event_value', class: 'invalid-feedback' %>
+        </div>
       <% end %>
-      </ul>
+    </div>
+
+    <div class="col-12 mt-4">
+      <%= f.input :favorite %>
+    </div>
+
+    <div class="col-12 mt-4">
+      <%= f.submit 'Save Activity', class: 'btn btn-primary' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :activity_title %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

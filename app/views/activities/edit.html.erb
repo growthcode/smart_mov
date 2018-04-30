@@ -1,6 +1,14 @@
-<h1>Editing Activity</h1>
+<div class="row mt-3">
+  <div class="col-12">
+    <h1>Editing Activity</h1>
+  </div>
 
-<%= render 'form', activity: @activity %>
+  <div class="col-12 mt-3">
+    <%= render 'form', activity: @activity %>
+  </div>
 
-<%= link_to 'Show', @activity %> |
-<%= link_to 'Back', activities_path %>
+  <div class="col-12 mt-3">
+    <%= link_to 'Show', @activity %> |
+    <%= link_to 'Back', activities_path %>
+  </div>
+</div>

@@ -1,9 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="row my-3">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-3">
+        <h3><u>Type:</u></h3>
+      </div>
+      <div class="col-6">
+        <h3><%= @activity.title %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="row">
+      <div class="col-3">
+        <h3><u>Default Savings:</u></h3>
+      </div>
+      <div class="col-6">
+        <h3><%= number_to_currency(@activity.value) %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="row">
+      <div class="col-3">
+        <h3><u>Favorite:</u></h3>
+      </div>
+      <div class="col-6">
+        <h3><%= @activity.favorite.to_s.titleize %></h3>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @activity.title %>
-</p>
+<div class="row">
+  <div class="col-12">
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr class="d-flex text-center">
+          <th class="col-1">Event #</th>
+          <th class="col-3">Value</th>
+          <th class="col-4">Happened At</th>
+          <th class="col-4"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @activity.events.each_with_index do |event, i| %>
+          <tr class="d-flex text-center">
+            <th class="col-1"><%= i + 1 %></th>
+            <th class="col-3"><%= number_to_currency(event.value) %></th>
+            <th class="col-4"><%= happened_at_formatted(event) %></th>
+            <th class="col-4">
+              <%= link_to 'Edit', edit_event_path(event) %> | <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Edit Activity', edit_activity_path(@activity) %> |
 <%= link_to 'Back', activities_path %>

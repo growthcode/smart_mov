@@ -1,6 +1,13 @@
-<h1>Editing Event</h1>
+<div class="row mt-3">
+  <div class="col-12">
+    <h1>Editing Event</h1>
+  </div>
 
-<%= render 'form', event: @event %>
+  <div class="col-12 mt-3">
+    <%= render 'form', event: @event %>
+  </div>
 
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+  <div class="col-12 mt-3">
+    <%= link_to 'Back', activity_path(@event.activity_id) %>
+  </div>
+</div>

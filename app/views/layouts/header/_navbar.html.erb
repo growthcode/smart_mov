@@ -11,7 +11,7 @@
         <div class="navbar-nav ml-auto">
           <%= active_link_to 'Record Mov', new_event_path, active: :exclusive, class: 'nav-item nav-link' %>
           <%= active_link_to 'History', activities_path, active: :exclusive, class: 'nav-item nav-link' %>
-          <%= active_link_to 'Summary', events_path, class: 'nav-item nav-link' %>
+          <%= active_link_to 'Summary', events_path, active: :exclusive, class: 'nav-item nav-link' %>
           <div class="nav-item dropdown">
             <%= link_to current_user_greeting, '#', class: 'ml-md-2 nav-link dropdown-toggle', id: 'bs-profileNavDropdown', 'data-toggle' => 'dropdown', 'aria-haspopup' => true, 'aria-expanded' => false, role: 'button' %>
             <div class="dropdown-menu" aria-labelledby="#bs-profileNavDropdown">
