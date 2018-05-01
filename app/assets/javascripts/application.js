@@ -10,7 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//=  require rails-ujs
+//= require rails-ujs
 //= require jquery3
+//= require underscore
+//= require chart
+//= require helpers/underScoreMixins
 //= require popper
 //= require bootstrap-sprockets
+//= require backbone
+//= require app
+//= require_tree ./backbone

@@ -33,6 +33,7 @@ gem 'font-awesome-rails'
 gem 'jquery-rails' # Dropped in Rails 5.1
 gem 'simple_form'
 gem 'stamp'
+gem 'ejs'
 
 
 # https://github.com/rails/webpacker
@@ -43,7 +44,6 @@ gem 'foreman'
 # might use later:
 # ==============================================================================
 # gem 'devise_invitable'
-# gem 'ejs'
 # gem 'foreman'
 # gem 'friendly_id' # apply slug to user for friendly URLs
 # gem 'fullcalendar-rails' # flock calendar (hours / schedule)

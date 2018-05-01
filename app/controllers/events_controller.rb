@@ -4,7 +4,14 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = current_user.events.includes(:activity).order(:happened_at)
+    respond_to do |format|
+        format.html {}
+        format.json do
+          # binding.pry
+          render json: {}, status: :ok
+        end
+    end
+
   end
 
   # GET /events/1
