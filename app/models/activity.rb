@@ -28,6 +28,11 @@ class Activity < ApplicationRecord
   scope :with_title, -> (title) {
     where("activities.title ilike ?", title.to_s.strip)
   }
+  scope :history, -> {
+    joins(:events).group(:id).select(
+      'activities.id, activities.title, count(events.activity_id) as num_movs, sum(events.value) as value_saved'
+    )
+  }
 
   validates :title, :user_id, presence: true
   validates :title, uniqueness: { case_sensitive: false, scope: :user_id }

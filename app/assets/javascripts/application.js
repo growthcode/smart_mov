@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery3
 //= require underscore
+//= require palette
 //= require chart
 //= require helpers/underScoreMixins
 //= require popper

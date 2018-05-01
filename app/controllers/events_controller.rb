@@ -7,8 +7,7 @@ class EventsController < ApplicationController
     respond_to do |format|
         format.html {}
         format.json do
-          # binding.pry
-          render json: {}, status: :ok
+          render json: current_user.activities.history.to_json, status: :ok
         end
     end
 

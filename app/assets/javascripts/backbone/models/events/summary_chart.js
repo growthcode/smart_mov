@@ -1,10 +1,10 @@
-App.Models.SummaryChart = Backbone.Model.extend({
-  defaults: {
-    funDefaultStuff: "I'm a default message, yeah!"
-  },
+// App.Models.SummaryChart = Backbone.Model.extend({
+//   // defaults: {
+//   //   funDefaultStuff: "I'm a default message, yeah!"
+//   // },
 
-  url: 'events',
+//   url: 'events',
 
-  initialize: function(options) {
-  },
-});
+//   initialize: function(options) {
+//   },
+// });
