@@ -27,6 +27,7 @@ gem 'bootswatch'
 gem 'colorize','~> 0.7.5'
 gem 'devise'
 gem 'devise-bootstrapped'
+gem 'devise_token_auth'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'font-awesome-rails'
@@ -34,7 +35,6 @@ gem 'jquery-rails' # Dropped in Rails 5.1
 gem 'simple_form'
 gem 'stamp'
 gem 'ejs'
-
 
 # https://github.com/rails/webpacker
 gem 'webpacker', '~> 3.0.2' # https://mkdev.me/en/mentors/IvanShamatov || https://paweljw.github.io/2017/07/rails-5.1-api-with-vue.js-frontend-part-1-setting-up-a-rails-api-app/

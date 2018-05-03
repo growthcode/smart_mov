@@ -17,6 +17,9 @@
 #  last                   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  provider               :string           default("email"), not null
+#  uid                    :string           default(""), not null
+#  tokens                 :text
 #
 
 require 'rails_helper'
