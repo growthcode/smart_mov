@@ -20,6 +20,7 @@
 #  provider               :string           default("email"), not null
 #  uid                    :string           default(""), not null
 #  tokens                 :text
+#  graph_token            :string           not null
 #
 
 require 'rails_helper'
