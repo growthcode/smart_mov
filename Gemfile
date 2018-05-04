@@ -33,7 +33,7 @@ gem 'factory_bot_rails'
 gem 'faker'
 gem 'font-awesome-rails'
 gem 'graphql'
-gem 'graphiql-rails'
+gem 'graphiql-rails'#, group: :development
 gem 'jquery-rails' # Dropped in Rails 5.1
 gem 'simple_form'
 gem 'stamp'
@@ -109,4 +109,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # gem 'capistrano-rails', group: :development
 
 
-gem 'graphiql-rails', group: :development
