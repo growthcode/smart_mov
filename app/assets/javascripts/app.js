@@ -14,4 +14,9 @@ $(document).ready(function(){
   $.fn.select2.defaults.set( "theme", "bootstrap4" );
   App.initialize();
   Backbone.history.start({ pushState: true });
+
+  var flashDiv = $('#js-flash')
+  setTimeout(function(){
+    flashDiv.slideUp();
+  }, 3000);
 });
