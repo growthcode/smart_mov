@@ -2,11 +2,11 @@
   <div class="container">
     <%= link_to 'SmartMov', root_path, class: 'navbar-brand' %>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navBarToggler" aria-controls="bs-navBarToggler" aria-expanded="false" aria-label="Toggle Navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
     <% if user_signed_in? %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navBarToggler" aria-controls="bs-navBarToggler" aria-expanded="false" aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
       <div class="collapse navbar-collapse" id="bs-navBarToggler">
         <div class="navbar-nav ml-auto">
           <%= active_link_to 'Record Mov', new_event_path, active: :exclusive, class: 'nav-item nav-link' %>
