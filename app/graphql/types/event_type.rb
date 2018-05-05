@@ -5,9 +5,11 @@ module Types
     implements GraphQL::Relay::Node.interface
 
     global_id_field :id
-    field :value, types.Int
+    field :aid, types.Int, property: :id
+    field :value, types.Float
+    field :activity_id, !types.Int
     field :activityTitle, !types.String do
-      resolve -> (event, args, ctx) { event.activity.title }
+      resolve ->(event, args, ctx) { event.activity.title }
     end
     field :user, !UserType
   end

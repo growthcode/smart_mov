@@ -27,19 +27,19 @@
 # }
 
 SmartMovSchema = GraphQL::Schema.define do
-  # mutation(Types::MutationType)
+  mutation Types::MutationType
   query Types::QueryType
 
-  id_from_object -> (obj, type, ctx) {
+  id_from_object ->(obj, type, ctx) {
     GraphQL::Schema::UniqueWithinType.encode(type.name, obj.id, separator: "-#{ctx[:current_user].graph_token}-")
   }
 
-  object_from_id -> (id, ctx) {
+  object_from_id ->(id, ctx) {
     type_name, obj_id = GraphQL::Schema::UniqueWithinType.decode(id, {separator: "-#{ctx[:current_user].graph_token}-"})
     type_name.constantize.find(obj_id)
   }
 
-  resolve_type -> (obj, ctx) {
+  resolve_type ->(type, obj, ctx) {
     case obj
     when Event
       Types::EventType

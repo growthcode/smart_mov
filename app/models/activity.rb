@@ -25,7 +25,7 @@ class Activity < ApplicationRecord
 
   normalize_attributes :title, with: :squish
 
-  scope :with_title, -> (title) {
+  scope :with_title, ->(title) {
     where("activities.title ilike ?", title.to_s.strip)
   }
   scope :history, -> {
