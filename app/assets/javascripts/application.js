@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery3
+//= require select2
 //= require underscore
 //= require palette
 //= require chart

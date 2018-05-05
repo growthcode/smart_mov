@@ -3,10 +3,15 @@ App.Routers.BaseRouter = Backbone.Router.extend({
     '' : 'rootPath',
     '/' : 'rootPath',
     'events' : 'summary',
+    'events/new' : 'recordMov',
   },
 
   rootPath: function(params) {
     console.log('root')
+  },
+
+  recordMov: function() {
+    new App.Views.RecordMov
   },
 
   summary: function() {

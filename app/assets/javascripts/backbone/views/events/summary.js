@@ -1,6 +1,6 @@
 App.Views.Summary = Backbone.View.extend({
   template: JST['backbone/templates/todos/index'],
-  el: '#summaryChart',
+  el: '#js-summaryChart',
   collection: new App.Collections.SummaryChart,
   events: {
   },
