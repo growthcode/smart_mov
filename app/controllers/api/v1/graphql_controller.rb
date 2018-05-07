@@ -4,7 +4,6 @@ class Api::V1::GraphqlController < Api::BaseController
 
   # def create
   #   query_string = params[:query]
-  #   binding.pry
   #   query_variables = JSON.load(params[:variables]) || {}
   #   current_user = User.first
   #   context = { current_user: current_user }

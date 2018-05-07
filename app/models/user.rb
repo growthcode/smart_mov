@@ -37,9 +37,7 @@ class User < ApplicationRecord
   has_many :activities, dependent: :destroy
   has_many :events, through: :activities
   after_create :create_default_activities
-  before_validation -> {
-    binding.pry
-    self.graph_token = SecureRandom.hex(8)}, if: 'graph_token.blank?'
+  before_validation -> { self.graph_token = SecureRandom.hex(8) }, if: 'graph_token.blank?'
 
   def create_default_activities
     Activity::DEFAULTS.each do |title, value|
