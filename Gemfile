@@ -34,6 +34,7 @@ gem 'font-awesome-rails'
 gem 'graphql'
 gem 'graphiql-rails'#, group: :development
 gem 'jquery-rails' # Dropped in Rails 5.1
+gem 'jwt'
 gem 'simple_form'
 gem 'stamp'
 
