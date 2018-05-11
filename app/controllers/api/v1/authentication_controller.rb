@@ -11,7 +11,7 @@ class Api::V1::AuthenticationController < Api::BaseController
   end
 
   def test
-    # binding.pry
+    render json: {test_route: "success"}, status: :ok
   end
 
   private
@@ -19,8 +19,8 @@ class Api::V1::AuthenticationController < Api::BaseController
   def payload(user)
     return nil unless user and user.id
     {
-      auth_token: JsonWebToken.encode({user_id: user.id}),
-      user: {id: user.id, email: user.email}
+      auth_token: JsonWebToken.encode({ user_id: user.id, exp: (Time.now + 1.day).to_i }),
+      user: { id: user.id, email: user.email }
     }
   end
 end

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post "graphql" => "graphql#execute"
       post 'auth_user' => 'authentication#authenticate_user'
+      get 'test', to: 'authentication#test'
     end
   end
 end
