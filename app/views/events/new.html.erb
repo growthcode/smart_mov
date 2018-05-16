@@ -1,46 +1,78 @@
 <div id="js-recordMov">
-  <div class="row my-3">
-    <div class="col">
-      <h2>Record Mov</h2>
+  <div class="d-flex my-3">
+    <div class="">
+      <h2 id="js-headlineMovPage">Record Mov</h2>
     </div>
   </div>
 
-  <%= simple_form_for(@event) do |f| %>
-    <div class="row">
-      <div class="col-12">
-        <div class="row">
-          <div class="col-md-8">
-            <%= f.input :activity_id, as: :select, collection: @activities.map { |a| [a.title, a.id]}, selected: current_user.events.order(updated_at: :desc).limit(1).first.try(:activity_id), label: "Past Movs", required: false, prompt: '- Select from past Movs -' %>
-          </div>
-          <div class="col-md-4">
-            <label>TODO: Value</label>
-              <%= text_field_tag('', '', placeholder: 'Editable Activity value preloaded', class: 'form-control', disabled: true) %>
-          </div>
-        </div>
+  <div class="my-4 d-flex flex-row flex-sm-row-reverse">
+    <div class="form-checkk">
+      <%= check_box_tag '', '', @createNewCheckbox, id: 'js-toggleForms' %>
+      <label class="form-check-label">
+        <b>Create New</b>
+      </label>
+    </div>
+  </div>
 
-        <div class="row mt-5">
-          <div class="col-md-8">
-            <label>Create New Mov</label>
-            <%= text_field_tag('activity[title]', @new_activity.title, placeholder: 'Or create a new one...', class: 'form-control') %>
-          </div>
-          <div class="col-md-4">
-            <div class="form-group">
-              <label>New Mov Value</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <div class="input-group-text"">$</div>
-                </div>
-                <%= number_field_tag('activity[value]', @new_activity.value, placeholder: '5.00...', class: 'form-control', min: 0.01, step: '0.01') %>
-              </div>
+  <div id="js-reuseActivity">
+    <%= simple_form_for(@event) do |f| %>
+      <div class="row mb-3">
+        <% form_event_obj = if @event.try(:activity_id).present?
+                              @event
+                            else
+                               @default_activity
+                            end %>
+        <div class="col-md-8">
+          <%= f.input :activity_id, as: :select, collection: @activities.map { |a| [a.title, a.id]}, selected: form_event_obj.activity_id, label: "Movs List", required: false, class: 'js-reuseMovsSelect' %>
+        </div>
+        <div class="col-md-4">
+          <label>Savings</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"">$</div>
             </div>
+            <%= number_field_tag 'event[value]', form_event_obj.value, placeholder: '5.00...', class: 'form-control', min: 0.01, step: '0.01' %>
           </div>
+
+          <% if @event.errors[:value].present? %>
+            <div class="invalid-feedback">
+              <%= @event.errors[:value].join(', ') %>
+            </div>
+          <% end %>
         </div>
       </div>
+      <div class="d-flex flex-row">
+        <%= f.submit "Record Mov", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
 
-      <div class="col-12 my-2">
-          <%= f.submit "Save Mov", class: 'btn btn-primary' %>
+  <div id="js-newActivityForm" class="d-none">
+    <%= simple_form_for(@activity) do |f| %>
+      <div class="row">
+        <div class="col-md-8 mb-3">
+          <label>Create New Mov</label>
+          <%= f.text_field(:title, placeholder: 'Bring Lunch Into Work...', class: 'form-control') %>
         </div>
-    </div>
-  <% end %>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Default Savings</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"">$</div>
+              </div>
+              <%= number_field_tag('activity[value]', @activity.value, placeholder: '5.00...', class: 'form-control', min: 0.01, step: '0.01') %>
+            </div>
+            <% if @activity.errors[:value].present? %>
+              <div class="invalid-feedback"><%= @event.errors[:value].join(", ") %></div>
+            <% end %>
+          </div>
+        </div>
 
+      </div>
+        <div class="d-flex flex-row flex-sm-row-reverse">
+          <%= f.submit "Create Mov", class: 'btn btn-success' %>
+        </div>
+    <% end %>
+  </div>
 </div>

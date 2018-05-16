@@ -15,6 +15,11 @@ class Api::BaseController < ActionController::API
   end
 
   private
+
+  def current_user
+    @current_user
+  end
+
   def http_token
       @http_token ||= if request.headers['Authorization'].present?
         request.headers['Authorization'].split(' ').last

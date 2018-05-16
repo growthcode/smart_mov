@@ -22,13 +22,17 @@ class ActivitiesController < ApplicationController
 
   # POST /activities
   def create
-    @activity = Activity.new(activity_params)
+    @activity = current_user.activities.find_or_initialize_by(title: activity_params[:title])
 
-    if @activity.save
-      redirect_to @activity, notice: 'Activity was successfully created.'
+    if @activity.persisted?
+      flash[:alert] = "This Mov has already been created: \"#{@activity.title}\""
+    elsif @activity.update(activity_params)
+      flash[:success] = "Mov Created, be sure to still Record the Mov when you are ready."
     else
-      render :new
+      flash[:alert] = "Could not save move because: \"#{@activity.errors.full_messages.join(', ')}\""
     end
+
+    redirect_back(fallback_location: new_event_path)
   end
 
   # PATCH/PUT /activities/1
@@ -50,6 +54,11 @@ class ActivitiesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
       @activity = Activity.find(params[:id])
+    end
+
+    def set_activities
+      @default_activity = current_user.events.order(updated_at: :desc).limit(1).first
+      @activities = current_user.activities.order(:title)
     end
 
     # Only allow a trusted parameter "white list" through.

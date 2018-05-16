@@ -34,6 +34,6 @@ class Activity < ApplicationRecord
     )
   }
 
-  validates :title, :user_id, presence: true
+  validates :value, :title, :user_id, presence: true
   validates :title, uniqueness: { case_sensitive: false, scope: :user_id }
 end

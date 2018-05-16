@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @new_activity = Activity.new
+    @activity = Activity.new
     @event = Event.new
   end
 
@@ -29,27 +29,12 @@ class EventsController < ApplicationController
 
   # POST /events
   def create
-    if new_activity_params.present? && new_activity_params[:title].present?
-      @new_activity = current_user.activities.with_title(new_activity_params).first
-      @new_activity ||= current_user.activities.create(new_activity_params)
-    elsif event_params[:activity_id].present?
-      @activity = current_user.activities.find(event_params[:activity_id])
-    end
-
-    @event = if @activity.present?
-               @activity.events.new(event_params)
-             elsif @new_activity.blank?
-               @new_activity = Activity.new
-               @event = Event.new
-             end
-
-    if @event.value.blank?
-      @event.value = @activity.try(:value)
-    end
+    @event = current_user.activities.find(activity_id_from_params).events.new(event_params)
 
     if @event.save
-      redirect_to @event, notice: 'Event was successfully created.'
+      redirect_to action: :new
     else
+      @activity = Activity.new
       set_activities
       render :new
     end
@@ -81,8 +66,29 @@ class EventsController < ApplicationController
     params.require(:event).permit(:activity_id, :value)
   end
 
+  def activity_id_from_params
+    params.require(:event).require(:activity_id)
+  end
+
   def set_activities
-    @activities = current_user.activities
+    @default_activity = current_user.events.order(updated_at: :desc).limit(1).first
+    @activities = current_user.activities.order(:title)
+    # @activities = current_user.activities.joins(
+    #   "LEFT OUTER JOIN events on events.activity_id = activities.id"
+    # ).select(%{
+    #   activities.id,
+    #   activities.title,
+    #   activities.value,
+    #   count(events.activity_id) as events_count
+    # }).group(%{
+    #   activities.id,
+    #   activities.title,
+    #   activities.value
+    # }).order('events_count DESC, activities.title')
+  end
+
+  def reuse_activity_params
+    params.require(:reuse).require(:activity).permit(:title, :event)
   end
 
   def new_activity_params
