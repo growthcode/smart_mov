@@ -17,6 +17,6 @@ App.Routers.BaseRouter = Backbone.Router.extend({
 
   summary: function() {
     new App.Views.RecordMov
-    // new App.Views.Summary
+    new App.Views.Summary
   }
 });

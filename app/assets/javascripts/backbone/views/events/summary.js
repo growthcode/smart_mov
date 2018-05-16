@@ -6,12 +6,14 @@ App.Views.Summary = Backbone.View.extend({
   },
 
   initialize: function(options){
-    this.collection.fetch({
-      context: this,
-      success: function(){
-        this.render()
-      }
-    })
+    if (this.$el.find("#summaryChartCanvas").length > 0) {
+      this.collection.fetch({
+        context: this,
+        success: function(){
+          this.render()
+        }
+      })
+    }
   },
 
   render: function(){
