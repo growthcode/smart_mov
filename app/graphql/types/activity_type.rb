@@ -3,6 +3,7 @@ module Types
     name "Activity"
     description "Movs of the User"
     implements GraphQL::Relay::Node.interface
+    # object_from_id
 
     global_id_field :id
     field :value, types.Float do

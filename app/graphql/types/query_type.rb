@@ -42,5 +42,12 @@ module Types
       description "all activities"
       resolve ->(obj, args, ctx) { ctx[:current_user].activities.history }
     end
+
+    # field :activity, types[Types::ActivityType] do
+    #   description "Find an Activity by ID"
+    #   resolve ->(obj, args, ctx) {
+    #     ctx[:current_user].activities.find_by(args[:id])
+    #   }
+    # end
   end
 end

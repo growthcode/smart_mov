@@ -1,44 +1,23 @@
-# query {
-#   node(id: "VXNlci0yNjhkNDk5NmRlZDZkYzg4LTE=") {
-#     id
-#     ... on Event {
-#       activityTitle
-#       value
-#     }
-#     ... on User {
-#       email
-#         first
-#         last
-#     }
-#   }
-#
-#   me {
-#     id
-#     email
-#     first
-#     last
-#   }
-#
-#   events {
-#     id
-#     activityTitle
-#     value
-#   }
-# }
+# Object Identification Hooks
+# A GraphQL schema needs a handful of hooks for finding and disambiguating objects while queries are executed.
 
 SmartMovSchema = GraphQL::Schema.define do
   mutation Types::MutationType
   query Types::QueryType
 
+  # return a unique ID for the given object
+  # This ID will later be sent to object_from_id to refetch the object
   id_from_object ->(obj, type, ctx) {
     GraphQL::Schema::UniqueWithinType.encode(type.name, obj.id, separator: "-#{ctx[:current_user].graph_token}-")
   }
 
+  # receives a unique ID and must return the object for that ID, or nil
   object_from_id ->(id, ctx) {
     type_name, obj_id = GraphQL::Schema::UniqueWithinType.decode(id, {separator: "-#{ctx[:current_user].graph_token}-"})
     type_name.constantize.find(obj_id)
   }
 
+  # used when a specific object’s corresponding GraphQL type must be determined
   resolve_type ->(type, obj, ctx) {
     case obj
     when Activity
