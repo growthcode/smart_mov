@@ -27,6 +27,7 @@ module Types
       # }
     end
 
+
     field :me, Types::UserType do
       description "current_user"
       resolve ->(obj, args, ctx) { ctx[:current_user] }
@@ -35,6 +36,11 @@ module Types
     field :events, types[Types::EventType] do
       description "all events"
       resolve ->(obj, args, ctx) { ctx[:current_user].events.order(created_at: :desc).all }
+    end
+
+    field :activities, types[Types::ActivityType] do
+      description "all activities"
+      resolve ->(obj, args, ctx) { ctx[:current_user].activities.history }
     end
   end
 end

@@ -30,7 +30,7 @@ class Activity < ApplicationRecord
   }
   scope :history, -> {
     joins(:events).group(:id).select(
-      'activities.id, activities.title, count(events.activity_id) as num_movs, sum(events.value) as value_saved'
+      'activities.id, activities.title, activities.value, count(events.activity_id) as num_movs, sum(events.value) as value_saved'
     )
   }
 

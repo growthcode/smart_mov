@@ -41,6 +41,8 @@ SmartMovSchema = GraphQL::Schema.define do
 
   resolve_type ->(type, obj, ctx) {
     case obj
+    when Activity
+      Types::Activity
     when Event
       Types::EventType
     when User
