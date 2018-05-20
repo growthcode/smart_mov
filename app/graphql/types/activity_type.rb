@@ -17,5 +17,11 @@ module Types
         (activity.value_saved / activity.num_movs).round(2)
       end
     end
+    field :events do
+      type types[EventType]
+      resolve -> (activity, args, ctx) do
+        activity.events.order(happened_at: :desc)
+      end
+    end
   end
 end

@@ -3,14 +3,12 @@ module Types
     name "Event"
     description "Movs of the User"
     implements GraphQL::Relay::Node.interface
-
     global_id_field :id
-    field :aid, types.Int, property: :id
     field :value, types.Float
-    field :activity_id, !types.Int
-    field :activityTitle, !types.String do
-      resolve ->(event, args, ctx) { event.activity.title }
+    field :happened_at, types.String do
+      resolve -> (event, args, ctx) do
+        event.happened_at.localtime.stamp("9/9/99 at 3:00am PST")
+      end
     end
-    field :user, !UserType
   end
 end

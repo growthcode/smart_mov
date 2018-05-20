@@ -18,12 +18,14 @@ SmartMovSchema = GraphQL::Schema.define do
   }
 
   # used when a specific object’s corresponding GraphQL type must be determined
+  # such as when sending in "node(id: 'RANDOM HASH')"
   resolve_type ->(type, obj, ctx) {
     case obj
-    when Activity
-      Types::Activity
     when Event
+        binding.pry
       Types::EventType
+    when Activity
+      Types::ActivityType
     when User
       Types::UserType
     else
