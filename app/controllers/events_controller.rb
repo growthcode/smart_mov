@@ -71,7 +71,7 @@ class EventsController < ApplicationController
   end
 
   def set_activities
-    @default_activity = current_user.events.order(updated_at: :desc).limit(1).first
+    @default_activity = current_user.events.order(updated_at: :desc).limit(1).first || Event.new
     @activities = current_user.activities.order(:title)
     # @activities = current_user.activities.joins(
     #   "LEFT OUTER JOIN events on events.activity_id = activities.id"
