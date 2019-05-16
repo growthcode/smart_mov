@@ -1,0 +1,7 @@
+{
+  "presets": ["babel-preset-expo"],
+  "plugins": [
+    "transform-react-jsx-source",
+    ["babel-plugin-root-import", { "rootPathSuffix": "app" }]
+  ]
+}
